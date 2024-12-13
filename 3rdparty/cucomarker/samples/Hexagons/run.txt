@@ -1,0 +1,9 @@
+./printmarker 1 ../samples/Hexagons/HEXAGON1/hexagon.svg ../samples/Hexagons/HEXAGON1/images/hexagon_ ../samples/Hexagons/HEXAGON1/config.yml -e 10 -ncrcbits 16
+
+./markerdetector ../samples/Hexagons/HEXAGON1/images/hexagon_0001.png ../samples/Hexagons/HEXAGON1/config.yml
+
+./markerdetector ../samples/Hexagons/HEXAGON1/test.mp4 ../samples/Hexagons/HEXAGON1/config.yml
+./markerdetector ../samples/DUAL/test.mp4 ../samples/Hexagons/HEXAGON1/config.yml
+
+
+// Dual

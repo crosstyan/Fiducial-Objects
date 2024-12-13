@@ -1,0 +1,1 @@
+./mapperObject ../DATA/RhombicDodecahedronMap/images ../DATA/RhombicDodecahedronMap/cameraparams.yml 1 -customized ../DATA/RhombicDodecahedronMap/config.yml out.pcd

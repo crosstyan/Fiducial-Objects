@@ -1,0 +1,27 @@
+The cucomarker library is a opensource implementation of the research work:
+
+"Design, Detection, and Tracking of Customized Fiducial Markers", D Jurado-Rodríguez, R Muñoz-Salinas, S Garrido-Jurado, Rafael Medina-Carnicer, IEEE Access vol 9, pages 140066-140078, year 2021
+
+It allows you to create customizable markers (like Aruco, but with your own design). It has been designed
+to be portable. A single header file (cucomarker) is all you need to include it into your own project.
+
+
+Procceed as follows:
+
+1) Follow the tutorial on how to create marker template. You need a SVG editor (like inkscape).
+  As a result, you will obtain a .svg file with your model design, indicating the bits employed for data and
+  for CRC along with the colors they have.
+
+2) Use the program printmarker to obtain the different markers from your template. If your template has for instance
+4 data bits, it means you can create up to 2^4=16 different markers. The printmarker program needs to read
+svg files, which requires the use of 3rdparty programs (tinyxml2 and plutovg). This depedency is only required for this
+program, but does not need to be in your own project.  The printmarker program generates a png image of your markers you
+can print, and also a configuration file in YAML format that can be read with OpenCV later.
+
+3) In your own project, include the header file cucomarker.h and do as in the example program markerdetector.cpp
+The program reads the  YAML marker configuration  file and images and will detect markers in the image.
+Since cucomarker.h only depends on OpenCV, you can easily integrate it into your project without additional messy
+dependencies.
+
+Cheers!
+

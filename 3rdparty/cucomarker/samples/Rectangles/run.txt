@@ -1,0 +1,2 @@
+./printmarker 1 ../samples/Rectangles/RECTANGLE1/rectangle.svg ../samples/Rectangles/RECTANGLE1/images/rectangle_ ../samples/Rectangles/RECTANGLE1/config.yml -e 1 -ncrcbits 16
+./markerdetector ../samples/Rectangles/RECTANGLE1/images/rectangle_0001.png ../samples/Rectangles/RECTANGLE1/config.yml
