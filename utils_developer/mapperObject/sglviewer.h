@@ -4,16 +4,21 @@
 #ifndef _SGL_OpenCV_VIewer_H
 #define _SGL_OpenCV_VIewer_H
 #include "sgl.h"
+#include <cstdint>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include "aruco/markermap.h"
+#include <random>
 #include <string>
 #include <map>
+#include <algorithm>
  //Class using an opencv window to render and manipulate a sgl scene
 
 
 #include "../src/utils/generalMarkerDetector.hpp"
 
+static std::random_device rd;
+static std::mt19937 g(rd());
 
 class MapperSceneDrawer{
 
@@ -73,10 +78,10 @@ public:
                     }
                 }
                 if(i == (m.points.size()-1)){
-                    Scn.drawLine((sgl::Point3*)&points[i],(sgl::Point3*)&points[0],{255,gcolor,rcolor},width);
+                    Scn.drawLine((sgl::Point3*)&points[i],(sgl::Point3*)&points[0],{255,static_cast<uint8_t>(gcolor), static_cast<uint8_t>(rcolor)},width);
                 }
                 else{
-                    Scn.drawLine((sgl::Point3*)&points[i],(sgl::Point3*)&points[i+1],{255,gcolor,rcolor},width);
+                    Scn.drawLine((sgl::Point3*)&points[i],(sgl::Point3*)&points[i+1],{255,static_cast<uint8_t>(gcolor), static_cast<uint8_t>(rcolor)},width);
                 }
             }
 
@@ -220,7 +225,11 @@ private:
         //select only a fraction of them number of them
         if(perct!=1){
             int n_used=float(points_id.size())*(perct);
+            #if __cplusplus >= 201703L
+            std::shuffle(points_id.begin(),points_id.end(), g);
+            #else
             std::random_shuffle(points_id.begin(),points_id.end());
+            #endif
             points_id.resize( n_used);
         }
 
