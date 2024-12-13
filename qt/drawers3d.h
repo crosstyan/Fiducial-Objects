@@ -4,8 +4,13 @@
 #include <opencv2/core.hpp>
 #include <memory>
 #include "tools/qtgl/object.h"
+#if defined (__APPLE__) || defined(MACOSX)
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+#else
 #include <GL/freeglut.h>
 #include <GL/gl.h>
+#endif
 
 
 /* CUBE */

@@ -76,11 +76,22 @@ ENDIF()
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 SET(BUILD_QT ON)
-find_package(Qt5 COMPONENTS Widgets Network       )
+# -DQt5_DIR=$(brew --prefix qt5)/lib/cmake/Qt5
+# https://stackoverflow.com/questions/40081327/macos-sierra-cmake-failed-with-qt5
+if (APPLE)
+    set(CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@5/lib/cmake/Qt5")
+endif()
+
+find_package(Qt5 COMPONENTS Widgets Network)
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QtQml_INCLUDE_DIRS})
 add_definitions(${Qt5Widgets_DEFINITIONS})
-IF(Qt5_FOUND AND BUILD_GUI)
-    ADD_SUBDIRECTORY(qt)
+
+IF(BUILD_GUI)
+    IF(Qt5_FOUND)
+        ADD_SUBDIRECTORY(qt)
+    ELSE()
+        MESSAGE(WARNING "Qt5 not found. GUI will not be built")
+    ENDIF()
 ENDIF()
 # ----------------------------------------------------------------------------
 #   Uninstall target, for "make uninstall"
