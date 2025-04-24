@@ -1,5 +1,4 @@
-# Minimun version for cmake
-CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 
 project(fiducial_object VERSION "1.0.0" LANGUAGES CXX C)
 set(PROJECT_SOVERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")

@@ -32,4 +32,5 @@ build
 *.out
 *.app
 cmake-*
+.cache
 .DS_Store
