@@ -34,3 +34,4 @@ build
 cmake-*
 .cache
 .DS_Store
+.vscode/settings.json
